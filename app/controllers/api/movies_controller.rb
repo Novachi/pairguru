@@ -3,7 +3,7 @@
 module Api
   class MoviesController < ApplicationController
     def index
-      @movies = Movie.all
+      @movies = Movie.includes(:genre).all
       render json: @movies, each_serializer: MovieSerializer
     end
 
