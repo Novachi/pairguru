@@ -9,8 +9,9 @@ gem "draper"
 gem "haml-rails"
 gem "jquery-rails"
 gem "sass-rails"
-gem "sqlite3"
+gem "sqlite3", '~> 1.3.6'
 gem "uglifier"
+gem "dry-initializer"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.1.0", require: false
