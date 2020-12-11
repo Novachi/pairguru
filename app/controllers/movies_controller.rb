@@ -3,6 +3,7 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all.decorate
+    @comment = Comment.new
   end
 
   def show
