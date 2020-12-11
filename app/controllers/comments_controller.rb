@@ -14,6 +14,8 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
+    return handle_not_owned_comment if @comment.user != current_user
+
     if @comment.destroy
       flash[:notice] = 'Comment destroyed'
       redirect_back(fallback_location: root_path)
@@ -24,6 +26,11 @@ class CommentsController < ApplicationController
   end
 
   private
+
+  def handle_not_owned_comment
+    flash[:danger] = "Couldn't destroy another's user comment"
+    redirect_back(fallback_location: root_path)
+  end
 
   def comment_params
     params.require(:comment).permit(:movie_id, :user_id, :text)
