@@ -1,0 +1,11 @@
+%table.table.table-striped
+  %tbody
+    - users.each_with_index do |user, i|
+      %tr
+        %td.align-middle= i + 1
+        %td.align-middle
+          %h4
+            = user.email
+        %td.align-middle
+          %p
+            = pluralize(user.comment_count, 'comment')
