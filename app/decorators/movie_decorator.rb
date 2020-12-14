@@ -2,8 +2,20 @@ class MovieDecorator < Draper::Decorator
   delegate_all
 
   def cover
-    "http://lorempixel.com/100/150/" +
-      %w[abstract nightlife transport].sample +
-      "?a=" + SecureRandom.uuid
+    "http://pairguru-api.herokuapp.com#{movie_full_data['data']['attributes']['poster']}"
+  end
+
+  def description
+    movie_full_data['data']['attributes']['plot']
+  end
+
+  def rating
+    movie_full_data['data']['attributes']['rating']
+  end
+
+  private
+
+  def movie_full_data
+    @movie_full_data ||= MoviesDataRetriever.new(title: title).call
   end
 end

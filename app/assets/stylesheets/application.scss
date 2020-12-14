@@ -12,4 +12,12 @@
 
 .new-comment-label {
   display: block;
+  
+td.align-middle {
+  vertical-align: middle !important;
+}
+
+.movie_poster {
+  width: 100px;
+  height: 150px;
 }
