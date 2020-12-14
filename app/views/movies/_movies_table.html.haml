@@ -13,7 +13,23 @@
               = link_to movie.genre.name, movies_genre_path(movie.genre)
             = ' (' + movie.released_at.to_s + ')'
           %p= movie.description
-
           %p
             %small
               = "Rating: #{movie.rating}/10"
+          = form_for(@comment) do |f|
+            = f.hidden_field :movie_id, { value: movie.id }
+            = f.hidden_field :user_id, { value: current_user.id }
+            .form_field
+              = f.label :text, 'Post a Comment', class: 'new-comment-label'
+              = f.text_area :text
+            .form_field
+              = f.submit 'Post'
+          .comment-section
+            %h4 Comments
+            - movie.comments.each do |comment|
+              .comment-section__comment
+                %p
+                  %strong= comment.user.email
+                  - if comment.user == current_user
+                    = link_to 'Delete', comment_path(comment), method: :delete, 'data-confirm' => 'Are you sure you want to delete ?'
+                %p= comment.text

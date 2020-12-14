@@ -2,6 +2,7 @@ class MoviesController < ApplicationController
   before_action :authenticate_user!, only: [:send_info]
 
   def index
+    @comment = Comment.new
     @movies = Movie.includes(:genre).all.decorate
   end
 

@@ -1,6 +1,18 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.comment-section {
+  border-top: 1px solid black;
+  margin-top: 8px;
+
+  &__comment {
+    margin: 8px;
+  }
+}
+
+.new-comment-label {
+  display: block;
+  
 td.align-middle {
   vertical-align: middle !important;
 }
