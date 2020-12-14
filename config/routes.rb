@@ -22,4 +22,9 @@ Rails.application.routes.draw do
       get :export
     end
   end
+
+  resources :comments, only: %i[create destroy]
+  namespace :api do
+    resources :movies, only: %i[index show]
+  end
 end

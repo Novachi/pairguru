@@ -4,6 +4,7 @@ require "spec_helper"
 require File.expand_path("../config/environment", __dir__)
 require "rspec/rails"
 require "pry"
+require "devise"
 require "capybara/rails"
 require "simplecov"
 require "shoulda/matchers"
@@ -34,6 +35,8 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include FactoryBot::Syntax::Methods
   config.include Capybara::DSL
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::IntegrationHelpers, type: :request
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
