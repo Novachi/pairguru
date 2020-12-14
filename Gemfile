@@ -11,6 +11,7 @@ gem "jquery-rails"
 gem "sass-rails"
 gem "sqlite3", '~> 1.3.6'
 gem "uglifier"
+gem "sidekiq"
 gem "dry-initializer"
 gem "active_model_serializers"
 
