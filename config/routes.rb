@@ -7,6 +7,13 @@ Rails.application.routes.draw do
       get "movies"
     end
   end
+
+  resources :users, only:[] do
+    collection do
+      get :top_commenters
+    end
+  end
+
   resources :movies, only: [:index, :show] do
     member do
       get :send_info
